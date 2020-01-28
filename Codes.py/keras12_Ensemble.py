@@ -1,4 +1,6 @@
 # Funtional API Model (Ensemble)
+# 다르게 해주는 이유: 각각의 가중치를 비교할 수 있고, 또는 다른 가중치를 두게끔 하고 싶을 때.
+
 
 #1. 데이터
 import numpy as np
@@ -71,18 +73,23 @@ model.fit([x1_train, x2_train], y_train, epochs=100, batch_size=10,
 loss, mse = model.evaluate([x1_test, x2_test], y_test, batch_size=10)
 print('mse: ', mse)
 
+'''
 x_prd = np.array([[201,202,203], [204,205,206],[207,208,209]]) # 1개 더 늘림
 x_prd = np.transpose(x_prd)
 results = model.predict(x_prd, batch_size=1)
 print(results)
+'''
 
-# RMSE 만들기
+# 평가지표 / RMSE 만들기
 from sklearn.metrics import mean_squared_error
 y_predict = model.predict([x1_test, x2_test], batch_size=1)
 
 def RMSE(y_test, y_predict):
     return np.sqrt(mean_squared_error(y_test, y_predict))
 print("RMSE :", RMSE(y_test, y_predict))
+
+# 평가지표 / R2 만들기
+from sklearn.metrics import r2_score
 
 r2_y_predict  = r2_score(y_test, y_predict)
 print("R2 : ", r2_y_predict)

@@ -52,3 +52,6 @@ def RMSE(y_test, y_predict):
     , y_predict))
 print("RMSE :", RMSE(y_test, y_predict))
 
+# R2 구하기
+from sklearn.metrics import r2_score
+

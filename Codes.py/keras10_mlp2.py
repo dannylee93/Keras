@@ -36,7 +36,7 @@ model.add(Dense(64, input_shape=(3, )))
 model.add(Dense(32))
 model.add(Dense(16))
 model.add(Dense(8))
-model.add(Dense(2))  # 2차원 데이터이기 때문에 아웃풋 노드를 2로 바꿔야한다.
+model.add(Dense(1))  # 2차원 데이터이기 때문에 아웃풋 노드를 2로 바꿔야한다.
 
 model.summary()
 
