@@ -50,7 +50,9 @@ output_tensor_2 = Dense(1)(hiddenlayers_2) # 내가 원하는 모델 쪽에 더 
 
 from keras.layers.merge import concatenate  # 모델을 사슬처럼 엮는 메소드
 
+# merged_model = Concatenate()([output_tensor_1, output_tensor_2])
 merged_model = concatenate([output_tensor_1, output_tensor_2])
+# concatenate에서 디폴트 값중에 하나인 axis=-1를 변경하면 파라미터의 개수로 확인 가능
 
 middle_1 = Dense(4)(merged_model)
 middle_2 = Dense(7)(middle_1)
@@ -65,12 +67,12 @@ model.summary()
 
 #3. 훈련
 model.compile(loss='mse', optimizer='adam', metrics=['mse'])
-model.fit([x1_train, x2_train], y_train, epochs=100, batch_size=10,
+model.fit([x1_train, x2_train], [y_train], epochs=100, batch_size=10,
            validation_data=([x1_val,x2_val], y_val))
 # model.fit(x, y, epochs=100)
 
 #4. 평가예측
-loss, mse = model.evaluate([x1_test, x2_test], y_test, batch_size=10)
+loss, mse = model.evaluate([x1_test, x2_test], [y_test], batch_size=10)
 print('mse: ', mse)
 
 '''
