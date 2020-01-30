@@ -1,4 +1,4 @@
-![](https://t1.daumcdn.net/cfile/tistory/99D3F43F5C8AB6B20C)
+<p align="center"><img src="https://t1.daumcdn.net/cfile/tistory/99D3F43F5C8AB6B20C" /></p>
 
 # Keras
 
