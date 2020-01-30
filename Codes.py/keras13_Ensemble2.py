@@ -80,7 +80,8 @@ output_tensor_5 = Dense(8)(middle_3)        # 세 번째 아웃풋 모델
 output_tensor_5 = Dense(3)(output_tensor_5)
 
 model = Model(inputs=[input_tensor_1,input_tensor_2], 
-              outputs=[output_tensor_3, output_tensor_4, output_tensor_5]) # 앙상블 형식의 모델 사용할 때 리스트('[]') 사용하게 된다.
+              outputs=[output_tensor_3, output_tensor_4, output_tensor_5]) 
+# 파라미터 개수가 2개 이상일 때, 리스트('[]') 사용하게 된다.
 
 
 model.summary()

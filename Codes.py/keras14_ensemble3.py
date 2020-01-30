@@ -50,8 +50,7 @@ output_tensor_4 = Dense(16)(middle_layer)        # 세 번째 아웃풋 모델
 output_tensor_4 = Dense(3)(output_tensor_4)
 
 model = Model(inputs=input_tensor_1, 
-              outputs=[output_tensor_2, output_tensor_3, output_tensor_4]) # 앙상블 형식의 모델 사용할 때 리스트('[]') 사용하게 된다.
-
+              outputs=[output_tensor_2, output_tensor_3, output_tensor_4]) 
 
 model.summary()
 

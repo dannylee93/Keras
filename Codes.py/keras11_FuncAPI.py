@@ -29,14 +29,7 @@ x_test, x_val , y_test, y_val = train_test_split(x_test, y_test,
 from keras.models import Sequential, Model
 from keras.layers import Dense, Input
 
-# model = Sequential()
 input_tensor = Input(shape=(3, ))
-
-# Dense_1 = Dense(32)(input_tensor)
-# Dense_2 = Dense(16)(Dense_1)
-# Dense_3 = Dense(8)(Dense_2)
-
-# output_tensor = Dense(1)(Dense_3)
 
 hiddenlayers = Dense(32)(input_tensor)
 hiddenlayers = Dense(16)(hiddenlayers)
@@ -47,7 +40,7 @@ output_tensor = Dense(1)(hiddenlayers)   # Hidden Layer의 이름을 각각 부�
 model = Model(inputs=input_tensor, outputs=output_tensor)
 
 model.summary()
-
+'''
 #3. 훈련
 model.compile(loss='mse', optimizer='adam', metrics=['mse'])
 model.fit(x_train, y_train, epochs=100, batch_size=10,
@@ -70,3 +63,4 @@ y_predict = model.predict(x_test, batch_size=1)
 def RMSE(y_test, y_predict):
     return np.sqrt(mean_squared_error(y_test, y_predict))
 print("RMSE :", RMSE(y_test, y_predict))
+'''
