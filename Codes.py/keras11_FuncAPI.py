@@ -1,4 +1,4 @@
-# Multi Layer Perceptron
+# Funtional API Model
 
 #1. 데이터
 import numpy as np
@@ -26,17 +26,25 @@ x_test, x_val , y_test, y_val = train_test_split(x_test, y_test,
 
 
 #2. 모델 구성
-from keras.models import Sequential
-from keras.layers import Dense
+from keras.models import Sequential, Model
+from keras.layers import Dense, Input
 
-model = Sequential()
+# model = Sequential()
+input_tensor = Input(shape=(3, ))
 
-# model.add(Dense(5, input_dim = 2))
-model.add(Dense(64, input_shape=(3, )))
-model.add(Dense(32))
-model.add(Dense(16))
-model.add(Dense(8))
-model.add(Dense(1))  # 2차원 데이터이기 때문에 아웃풋 노드를 2로 바꿔야한다.
+# Dense_1 = Dense(32)(input_tensor)
+# Dense_2 = Dense(16)(Dense_1)
+# Dense_3 = Dense(8)(Dense_2)
+
+# output_tensor = Dense(1)(Dense_3)
+
+hiddenlayers = Dense(32)(input_tensor)
+hiddenlayers = Dense(16)(hiddenlayers)
+hiddenlayers = Dense(8)(hiddenlayers)
+
+output_tensor = Dense(1)(hiddenlayers)   # Hidden Layer의 이름을 각각 부여하지 않고 동일한 이름으로 해도 가능
+
+model = Model(inputs=input_tensor, outputs=output_tensor)
 
 model.summary()
 
@@ -50,7 +58,7 @@ model.fit(x_train, y_train, epochs=100, batch_size=10,
 loss, mse = model.evaluate(x_test, y_test, batch_size=10)
 print('mse: ', mse)
 
-x_prd = np.array([[201,202,203], [204,205,206],[204,205,206]]) # 1개 더 늘림
+x_prd = np.array([[201,202,203], [204,205,206],[207,208,209]]) # 1개 더 늘림
 x_prd = np.transpose(x_prd)
 results = model.predict(x_prd, batch_size=1)
 print(results)

@@ -42,7 +42,16 @@ x_prd = np.array([101,102,103])
 results = model.predict(x_prd, batch_size=1)
 print(results)
 
-# R2 구하기
+# RMSE 만들기
+from sklearn.metrics import mean_squared_error
+y_predict = model.predict(x_test, batch_size=1)
+
+def RMSE(y_test, y_predict):
+    return np.sqrt(mean_squared_error(y_test
+    , y_predict))
+print("RMSE :", RMSE(y_test, y_predict))
+
+# R2 지표 만들기
 from sklearn.metrics import r2_score
 
 r2_y_predict  = r2_score(y_test, y_predict)
