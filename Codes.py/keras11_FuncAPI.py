@@ -40,7 +40,7 @@ output_tensor = Dense(1)(hiddenlayers)   # Hidden Layer의 이름을 각각 부�
 model = Model(inputs=input_tensor, outputs=output_tensor)
 
 model.summary()
-'''
+
 #3. 훈련
 model.compile(loss='mse', optimizer='adam', metrics=['mse'])
 model.fit(x_train, y_train, epochs=100, batch_size=10,
@@ -63,4 +63,3 @@ y_predict = model.predict(x_test, batch_size=1)
 def RMSE(y_test, y_predict):
     return np.sqrt(mean_squared_error(y_test, y_predict))
 print("RMSE :", RMSE(y_test, y_predict))
-'''

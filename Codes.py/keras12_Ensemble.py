@@ -35,7 +35,6 @@ x1_test, x1_val , x2_test, x2_val, y_test, y_val = train_test_split(x1_test, x2_
 from keras.models import Sequential, Model
 from keras.layers import Dense, Input
 
-# model = Sequential()
 input_tensor_1 = Input(shape=(3, ))
 hiddenlayers_1 = Dense(32)(input_tensor_1)
 hiddenlayers_1 = Dense(16)(hiddenlayers_1)
@@ -46,11 +45,12 @@ input_tensor_2 = Input(shape=(3, ))
 hiddenlayers_2 = Dense(16)(input_tensor_2)
 hiddenlayers_2 = Dense(8)(hiddenlayers_2)
 hiddenlayers_2 = Dense(8)(hiddenlayers_2)
-output_tensor_2 = Dense(1)(hiddenlayers_2) # 내가 원하는 모델 쪽에 더 많은 가중치 두는것도 가능하다.
+output_tensor_2 = Dense(1)(hiddenlayers_2) 
+# 내가 원하는 모델 쪽에 더 많은 가중치 두는것도 가능하다.
 
-from keras.layers.merge import concatenate  # 모델을 사슬처럼 엮는 메소드
+from keras.layers.merge import concatenate 
+# 모델을 사슬처럼 엮는 메소드
 
-# merged_model = Concatenate()([output_tensor_1, output_tensor_2])
 merged_model = concatenate([output_tensor_1, output_tensor_2])
 # concatenate에서 디폴트 값중에 하나인 axis=-1를 변경하면 파라미터의 개수로 확인 가능
 
@@ -58,29 +58,22 @@ middle_1 = Dense(4)(merged_model)
 middle_2 = Dense(7)(middle_1)
 output = Dense(1)(middle_2)
 
-model = Model(inputs=[input_tensor_1,input_tensor_2], outputs=output) # 앙상블 형식의 모델 사용할 때 리스트('[]') 사용하게 된다.
+model = Model(inputs=[input_tensor_1,input_tensor_2], outputs=output) 
+# 파라미터 개수가 2개 이상일 때, 리스트('[]') 사용하게 된다.
 
 
 model.summary()
-
 
 
 #3. 훈련
 model.compile(loss='mse', optimizer='adam', metrics=['mse'])
 model.fit([x1_train, x2_train], [y_train], epochs=100, batch_size=10,
            validation_data=([x1_val,x2_val], y_val))
-# model.fit(x, y, epochs=100)
+
 
 #4. 평가예측
 loss, mse = model.evaluate([x1_test, x2_test], [y_test], batch_size=10)
 print('mse: ', mse)
-
-'''
-x_prd = np.array([[201,202,203], [204,205,206],[207,208,209]]) # 1개 더 늘림
-x_prd = np.transpose(x_prd)
-results = model.predict(x_prd, batch_size=1)
-print(results)
-'''
 
 # 평가지표 / RMSE 만들기
 from sklearn.metrics import mean_squared_error
