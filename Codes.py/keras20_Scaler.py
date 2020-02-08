@@ -1,8 +1,6 @@
 # scikit-learn의 Scaler 메소드를 활용하여 데이터 스케일링
 
 from numpy import array
-from keras.models import Sequential
-from keras.layers import Dense, LSTM
 
 # 1. 데이터
 x = array([[1,2,3], [2,3,4], [3,4,5], [4,5,6], [5,6,7],
