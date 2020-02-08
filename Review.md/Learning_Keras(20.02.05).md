@@ -19,7 +19,7 @@
 
 CNN(Convolutional Neural Network) 라는 심층 합성곱 신경망의 알고리즘에 대한 이론적인 내용은 아래 주소에 정리했다. 
 
-*[Understanding CNN Algorithm](https://github.com/dannylee93/TIL/blob/master/Deep_Learning/딥러닝(Deep Learning)_08(CNN_Algorithm).md) (나의 Github/ TIL 저장소)*
+[Understanding CNN Algorithm](https://github.com/dannylee93/TIL/blob/master/Deep_Learning/딥러닝(Deep Learning)_08(CNN_Algorithm).md)   **Github/ TIL** Repository
 
 
 
@@ -70,7 +70,6 @@ model.summary()
 
 
 <p align="center"><img src="https://www.researchgate.net/profile/Steven_Young11/publication/306056875/figure/fig1/AS:393921575309346@1470929630835/Example-images-from-the-MNIST-dataset.png" alt="Mnist 이미지 검색결과" style="zoom:50%;" /><img src="" /></p>
-
 
 
 ### View Codes
